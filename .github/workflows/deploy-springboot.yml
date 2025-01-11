@@ -1,0 +1,30 @@
+name: Deploy Spring Boot App to AWS Elastic Beanstalk
+
+on:
+  push:
+    branches:
+      - main  # Trigger the action on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'  # Specify your Java version
+
+      - name: Build the Spring Boot app
+        run: ./mvnw clean package -DskipTests
+
+      - name: Deploy to AWS Elastic Beanstalk
+        run: |
+          eb init -p java --region us-east-1 --keyname your-ec2-key-pair
+          eb create your-environment-name
+          eb deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
