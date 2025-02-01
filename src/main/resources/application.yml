@@ -26,4 +26,4 @@ logging:
 
 
 server:
-  port: ${SERVER_PORT}
+  port: ${SERVER_PORT:8089}
