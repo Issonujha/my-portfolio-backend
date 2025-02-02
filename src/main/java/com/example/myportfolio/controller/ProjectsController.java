@@ -2,7 +2,6 @@ package com.example.myportfolio.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +19,11 @@ import com.example.myportfolio.service.ProjectServices;
 @RequestMapping("/projects")
 public class ProjectsController {
 	
-	@Autowired
 	private ProjectServices projectServices;
+	
+	public ProjectsController(ProjectServices projectServices) {
+		this.projectServices = projectServices;
+	}
 	
 	@GetMapping("/all")
 	public List<ProjectItem> getAll() {

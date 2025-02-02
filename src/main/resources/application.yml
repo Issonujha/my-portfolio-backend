@@ -1,16 +1,16 @@
 spring:
   datasource:
-    url: ${DB_URL}?createDatabaseIfNotExist=true
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:mysql://localhost:3306/my-portfolio?createDatabaseIfNotExist=true
+    username: root
+    password: Sonu123@
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate.ddl-auto: update
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ${EMAIL}
-    password: ${EMAIL_PASSWORD}
+    username: sjha9563@gmail.com
+    password: egyz yjfi omok iywf
     properties:
       mail:
         smtp:

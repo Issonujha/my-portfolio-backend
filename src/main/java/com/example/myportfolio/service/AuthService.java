@@ -50,7 +50,6 @@ public class AuthService {
 	}
 
 	private void doAuthenticate(String username, String password) {
-		
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
 		try {
 			manager.authenticate(authenticationToken);
