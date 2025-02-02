@@ -35,37 +35,35 @@ public class PortfolioConfig {
 
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@Autowired
 	private JwtAuthenticationFilter jwtAuthenticationFilter;
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-	    http
-	            // Disable CSRF for APIs (or configure it if needed)
-	            .cors(cors -> cors.disable())
-	            .csrf(csrf -> csrf.disable())
+		http
+				// Disable CSRF for APIs (or configure it if needed)
+				.cors(cors -> cors.disable()).csrf(csrf -> csrf.disable())
 
-	            // Configure endpoint authorization
-	            .authorizeHttpRequests(authz -> authz
-	                // Public endpoints that do not require authentication
-	                .requestMatchers("/", "/auth/login", "/auth/signup", "/projects/all", "/get/{id}", "/mail/send").permitAll()
+				// Configure endpoint authorization
+				.authorizeHttpRequests(authz -> authz
+						// Public endpoints that do not require authentication
+						.requestMatchers("/", "/auth/login", "/auth/signup", "/projects/all", "/get/{id}", "/mail/send")
+						.permitAll()
 
-	                // Protected endpoints that require authentication
-	                .anyRequest().authenticated() // Other endpoints require authentication
-	            )
+						// Protected endpoints that require authentication
+						.anyRequest().authenticated() // Other endpoints require authentication
+				)
 
-	            // Configure stateless session management (important for REST APIs)
-	            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				// Configure stateless session management (important for REST APIs)
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-	            // Add authentication filter (JWT or similar token-based authentication)
-	            // Apply the filter only to the secured routes
-	            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+				// Add authentication filter (JWT or similar token-based authentication)
+				// Apply the filter only to the secured routes
+				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
-	    return http.build();
+		return http.build();
 	}
-
-
 
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration builder) throws Exception {
