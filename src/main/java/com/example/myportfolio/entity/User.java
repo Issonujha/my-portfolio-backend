@@ -43,8 +43,11 @@ public class User implements UserDetails {
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
 	
+	private String info;
 	private String password;
 	private String name;
+	private Long phone;
+	private String address;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role", referencedColumnName = "id"))

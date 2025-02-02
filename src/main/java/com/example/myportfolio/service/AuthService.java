@@ -64,7 +64,10 @@ public class AuthService {
 		User user = new User();
         user.setName(signup.getName());
         user.setUsername(signup.getEmail());
-        user.setRoles(Set.of(Roles.builder().roleName("ADMIN").build()));
+        user.setPhone(signup.getContact());
+        user.setAddress(signup.getAddress());
+        user.setInfo(signup.getUsername());
+        user.setRoles(Set.of(Roles.builder().roleName("CUSTOMER").build()));
         user.setPassword(passwordEncoder.encode(signup.getPassword()));
         userRepository.save(user);
 	}
