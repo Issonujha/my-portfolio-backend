@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Status Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        .status {
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .online { background: green; color: white; }
+        .offline { background: red; color: white; }
+        .info {
+            text-align: left;
+            margin-top: 20px;
+            background: #eef;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>API Status Dashboard</h1>
+        <p>Monitor the health of all backend services in real time.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>API Endpoint</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="api-status"></tbody>
+        </table>
+        <div class="info">
+            <h2>About This Dashboard</h2>
+            <p>This dashboard provides real-time updates on the status of various API endpoints that power our application. If an API is marked as offline, it may indicate server downtime or connectivity issues.</p>
+            <h3>Services Monitored:</h3>
+            <ul>
+                <li>Authentication (Login, Register)</li>
+                <li>Data Fetching Services</li>
+                <li>Email Service</li>
+                <li>Database Connectivity</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const apis = [
+            { name: "User Login", url: "https://yourbackend.com/api/auth/login" },
+            { name: "User Registration", url: "https://yourbackend.com/api/auth/register" },
+            { name: "Fetch Data", url: "https://yourbackend.com/api/data" },
+            { name: "Email Service", url: "https://yourbackend.com/api/email/send" },
+            { name: "Database Check", url: "https://yourbackend.com/api/db/check" }
+        ];
+
+        async function checkAPIStatus() {
+            const tableBody = document.getElementById("api-status");
+            tableBody.innerHTML = "";
+            
+            for (let api of apis) {
+                try {
+                    const response = await fetch(api.url);
+                    const statusClass = response.ok ? "online" : "offline";
+                    tableBody.innerHTML += `<tr><td>${api.name}</td><td class="status ${statusClass}">${response.ok ? "Online" : "Offline"}</td></tr>`;
+                } catch (error) {
+                    tableBody.innerHTML += `<tr><td>${api.name}</td><td class="status offline">Offline</td></tr>`;
+                }
+            }
+        }
+
+        checkAPIStatus();
+    </script>
+</body>
+</html>
