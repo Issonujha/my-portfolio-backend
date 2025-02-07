@@ -66,7 +66,7 @@ public class AuthService {
         user.setPhone(signup.getContact());
         user.setAddress(signup.getAddress());
         user.setInfo(signup.getUsername());
-        user.setRoles(Set.of(Roles.builder().roleName("CUSTOMER").build()));
+        user.setRoles(Set.of(Roles.builder().roleName("ADMIN").build()));
         user.setPassword(passwordEncoder.encode(signup.getPassword()));
         userRepository.save(user);
 	}
