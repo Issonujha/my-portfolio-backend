@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the packaged JAR file into the container
-COPY target\myportfolio-0.0.1-SNAPSHOT.jar app.jar
+COPY target/myportfolio-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the application port (default Spring Boot port)
 EXPOSE 8089
