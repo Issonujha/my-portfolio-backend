@@ -1,14 +1,18 @@
-# Use an official OpenJDK runtime as a base image
-FROM openjdk:17-jdk-slim
+# Step 1: Build the application (using Maven)
+FROM maven:3.8.4-openjdk-11 AS build
 
-# Set the working directory in the container
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
 
-# Copy the packaged JAR file into the container
-COPY target/myportfolio-0.0.1-SNAPSHOT.jar app.jar
+RUN mvn clean install
 
-# Expose the application port (default Spring Boot port)
-EXPOSE 8089
+# Step 2: Create a lightweight image for running the JAR
+FROM openjdk:11-jre-slim
+
+WORKDIR /app
+COPY --from=build /app/target/myportfolio-0.0.1-SNAPSHOT.jar ./app.jar
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
