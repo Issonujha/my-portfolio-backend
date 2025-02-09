@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  my-portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Ensure Dockerfile is in the same directory as docker-compose.yml
+    ports:
+      - "8089:8089"
+    environment:
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_URL: ${DB_URL}
+      EMAIL: ${EMAIL}
+      EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+      SERVER_PORT: ${SERVER_PORT}
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
