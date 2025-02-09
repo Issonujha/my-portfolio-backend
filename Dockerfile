@@ -5,7 +5,7 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-# Run Maven to clean, package, and skip tests during the build
+# Run Maven to clean and package the project
 RUN mvn clean package -DskipTests
 
 # Step 2: Create a lightweight image for running the JAR
@@ -16,8 +16,8 @@ WORKDIR /app
 # Copy the JAR file from the build stage to the runtime stage
 COPY --from=build /app/target/myportfolio-0.0.1-SNAPSHOT.jar ./app.jar
 
-# Expose the port your application will run on (8089 in this case)
+# Expose port 8089 (or whatever port your Spring Boot app uses)
 EXPOSE 8089
 
-# Command to run the application using Spring Boot (via Maven)
+# Start the application using Spring Boot (via Maven)
 CMD ["mvn", "spring-boot:run"]
