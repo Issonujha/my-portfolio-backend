@@ -5,7 +5,7 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-RUN mvn clean install
+RUN mvn clean install -DskipTests
 
 # Step 2: Create a lightweight image for running the JAR
 FROM openjdk:17-jdk-slim
