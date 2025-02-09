@@ -8,7 +8,7 @@ COPY src ./src
 RUN mvn clean install
 
 # Step 2: Create a lightweight image for running the JAR
-FROM openjdk:17-jre-slim
+FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 COPY --from=build /app/target/myportfolio-0.0.1-SNAPSHOT.jar ./app.jar
