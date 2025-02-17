@@ -20,7 +20,12 @@ spring:
           starttls:
             enable: true
         debug: true
-  
+
+aws:
+  accessKey: ${AWS_ACCESS_KEY_ID}
+  secretKey: ${AWS_SECRET_ACCESS_KEY}
+  region: ${AWS_REGION}
+  bucketName: ${AWS_BUCKET_NAME}
     
 logging:
   level:
