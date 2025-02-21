@@ -19,6 +19,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,6 +49,10 @@ public class User implements UserDetails {
 	private String name;
 	private Long phone;
 	private String address;
+	private String thumb;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Customer customer;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role", referencedColumnName = "id"))
@@ -58,5 +63,7 @@ public class User implements UserDetails {
 		return this.roles.stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRoleName()))
 				.collect(Collectors.toList());
 	}
+	
+	
 
 }

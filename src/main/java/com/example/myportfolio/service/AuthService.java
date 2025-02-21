@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.example.myportfolio.dto.JwtRequest;
 import com.example.myportfolio.dto.JwtResponse;
 import com.example.myportfolio.dto.Signup;
+import com.example.myportfolio.entity.Customer;
 import com.example.myportfolio.entity.Roles;
 import com.example.myportfolio.entity.User;
 import com.example.myportfolio.jwt.JwtAuthenticationHelper;
@@ -59,15 +60,16 @@ public class AuthService {
 		}
 	}
 
-	public void register(Signup signup) {
+	public void register(Signup signup, Customer customer) {
 		User user = new User();
-        user.setName(signup.getName());
-        user.setUsername(signup.getEmail());
-        user.setPhone(signup.getContact());
-        user.setAddress(signup.getAddress());
-        user.setInfo(signup.getUsername());
-        user.setRoles(Set.of(Roles.builder().roleName("ADMIN").build()));
-        user.setPassword(passwordEncoder.encode(signup.getPassword()));
-        userRepository.save(user);
+		user.setName(signup.getName());
+		user.setUsername(signup.getEmail());
+		user.setPhone(signup.getContact());
+		user.setAddress(signup.getAddress());
+		user.setInfo(signup.getUsername());
+		user.setRoles(Set.of(Roles.builder().roleName("ADMIN").build()));
+		user.setPassword(passwordEncoder.encode(signup.getPassword()));
+		user.setCustomer(customer);
+		userRepository.save(user);
 	}
 }

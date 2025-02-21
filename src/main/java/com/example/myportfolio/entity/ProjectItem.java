@@ -2,7 +2,6 @@ package com.example.myportfolio.entity;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -24,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProjectItem {
+public class ProjectItem  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -41,5 +40,8 @@ public class ProjectItem {
 	@JoinColumn(name = "project-item-details-id", referencedColumnName = "id")
 	@JsonManagedReference
 	private ProjectItemDetails projectItemDetails;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Customer customer;
 
 }

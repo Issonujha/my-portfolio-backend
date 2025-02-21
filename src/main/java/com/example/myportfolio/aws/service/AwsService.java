@@ -11,8 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.example.myportfolio.CommonConstants;
+import com.example.myportfolio.common.CommonConstants;
 import com.example.myportfolio.dto.ImageDTO;
+import com.example.myportfolio.dto.MailRequest;
 import com.example.myportfolio.entity.ImageEntity;
 import com.example.myportfolio.entity.User;
 import com.example.myportfolio.jwt.JwtAuthenticationHelper;
@@ -20,6 +21,8 @@ import com.example.myportfolio.mapper.ImageMapper;
 import com.example.myportfolio.repository.ImageRepository;
 import com.example.myportfolio.repository.UserRepository;
 import com.example.myportfolio.service.EmailService;
+
+import jakarta.mail.MessagingException;
 
 @Service
 public class AwsService {
@@ -60,15 +63,26 @@ public class AwsService {
 		if (StringUtils.hasText(username)) {
 			User currentUser = userRepository.findByUsername(username).orElse(null);
 			if (currentUser != null) {
-				key = generateKey(currentUser, key);
+				ImageEntity imageEntity = ImageEntity.builder().description(description).fileName(file.getName())
+						.size(fileSize).userId(currentUser.getId()).build();
+				key = generateKey(currentUser, key, imageEntity.getId());
+				imageEntity.setAwsUrl(key);
 				PutObjectRequest request = new PutObjectRequest(bucketName, key, file.getInputStream(), null);
 				s3Client.putObject(request);
-				ImageEntity imageEntity = ImageEntity.builder().awsUrl(s3Client.getUrl(bucketName, key).toString())
-						.description(description).fileName(file.getName()).size(fileSize).userId(currentUser.getId())
-						.build();
 				// Need to send mail service
 				imageRepository.save(imageEntity);
 				imageDTO = ImageMapper.INSTANCE.toDTO(imageEntity);
+				try {
+					emailService.sendMailToMeFromWeb(
+							MailRequest.builder().to(currentUser.getUsername()).subject("Image Uploaded!")
+									.body("Hi " + currentUser.getName() + ", \n"
+											+ "Your image is uploaded successfully. you can simply view on: "
+											+ imageDTO.getAwsUrl())
+									.build());
+				} catch (MessagingException e) {
+					logger.info(username + " while uploading image " + key + " having error " + e.toString()
+							+ currentUser.getId());
+				}
 			} else {
 				logger.info(CommonConstants.USER_NOT_FOUND);
 			}
@@ -78,8 +92,8 @@ public class AwsService {
 		return imageDTO;
 	}
 
-	private String generateKey(User currentUser, String key) {
-		return "public/emp/" + currentUser.getId() + "/" + key;
+	private String generateKey(User currentUser, String key, String emageEntityId) {
+		return "public/emp/" + currentUser.getId() + "/" + emageEntityId + "_" + key;
 	}
 
 }

@@ -1,41 +1,37 @@
 package com.example.myportfolio.entity;
 
 import jakarta.annotation.Nonnull;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
 
 @Entity
-@Table(name = "image_entity")
+@Table(name = "customer")
 @Data
 @Builder
-public class ImageEntity {
-
+public class Customer {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private String id;
-
-	@Nonnull
-	private String awsUrl;
-
-	private String description;
-
-	@Nonnull
-	private String fileName;
+	
+	private String name;
+	
+	private String iden;
 	
 	@Nonnull
-	private Long size;
+	private String email;
 	
-	@Nonnull
-	private String userId;
+	private String nameLowerCase;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Customer customer;
-
+	private Long contact;
+	
+	private String address;
+	
+	private String thumb;
+	
 }

@@ -1,4 +1,4 @@
-package com.example.myportfolio;
+package com.example.myportfolio.common;
 
 public class CommonConstants {
 	

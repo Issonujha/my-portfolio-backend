@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.myportfolio.CommonConstants;
 import com.example.myportfolio.aws.service.AwsService;
+import com.example.myportfolio.common.CommonConstants;
 import com.example.myportfolio.dto.ImageDTO;
 import com.example.myportfolio.logging.LoggingService;
 

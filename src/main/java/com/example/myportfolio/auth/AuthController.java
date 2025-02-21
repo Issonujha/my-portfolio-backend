@@ -27,7 +27,7 @@ public class AuthController {
 
 	@PostMapping("/signup")
 	public String registerUser(@RequestBody Signup signup) {
-		authService.register(signup);
+		authService.register(signup, null);
 		return "User Registered Successfully";
 	}
 

@@ -1,9 +1,11 @@
 package com.example.myportfolio.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,5 +25,7 @@ public class Roles {
 	private String id;
 	private String roleName;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Customer customer;
 
 }

@@ -1,8 +1,8 @@
 package com.example.myportfolio.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,5 +35,8 @@ public class ProjectItemDetails {
 	@OneToOne(mappedBy = "projectItemDetails")
 	@JsonBackReference
 	private ProjectItem projectItem;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Customer customer;
 
 }
