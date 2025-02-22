@@ -21,10 +21,13 @@ public class CustomerController {
 	
 	@PostMapping("onboard")
 	public ResponseEntity<Object> onBoardCustomer(@RequestBody CustomerDTO customerDto) {
-		if (StringUtils.hasLength(customerDto.getName()) && StringUtils.hasLength(customerDto.getEmail()))
-			return ResponseEntity.ok(customerService.onBoard(customerDto));
-		else
-			return ResponseEntity.badRequest().body("Invalid data passed");
+		StringBuilder error = new StringBuilder();
+		if (StringUtils.hasLength(customerDto.getName()) && StringUtils.hasLength(customerDto.getEmail())) {
+			CustomerDTO customerDTO = customerService.onBoard(customerDto, error);
+			if (customerDTO != null)
+				return ResponseEntity.ok(customerDTO);
+		}
+		return ResponseEntity.badRequest().body(error.toString());
 	}
 
 }

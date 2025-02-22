@@ -48,7 +48,8 @@ public class PortfolioConfig {
 				// Configure endpoint authorization
 				.authorizeHttpRequests(authz -> authz
 						// Public endpoints that do not require authentication
-						.requestMatchers("/", "/auth/**", "/projects/all", "/get/{id}", "/mail/send")
+						.requestMatchers("/", "/logs", "/auth/**", "/projects/all", "/get/{id}", "/mail/send",
+								"/customer/onboard")
 						.permitAll()
 
 						// Protected endpoints that require authentication

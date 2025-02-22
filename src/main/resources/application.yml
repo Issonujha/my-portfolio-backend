@@ -28,6 +28,8 @@ aws:
   bucketName: ${AWS_BUCKET_NAME}
     
 logging:
+  file:
+    name: logs/docker.log
   level:
     org.springframework.security: DEBUG
 

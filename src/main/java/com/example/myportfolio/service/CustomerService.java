@@ -30,14 +30,17 @@ public class CustomerService {
 		this.emailService = emailService;
 	}
 
-	public CustomerDTO onBoard(CustomerDTO customerDto) {
+	public CustomerDTO onBoard(CustomerDTO customerDto, StringBuilder error) {
 		Customer customer = CustomerMapper.INSTANCE.toEntity(customerDto);
-		if (customer != null && customer.getEmail().contains("@gmail.com")) {
+		if (customer != null && !customerRepository.existsByEmail(customer.getEmail())
+				&& customer.getEmail().contains("@")) {
 			customer.setIden("CUST-" + customer.getEmail().substring(0, customer.getEmail().indexOf("@")));
 			customer.setNameLowerCase(customerDto.getName().toLowerCase());
 			customerRepository.save(customer);
 			creatADefaultUserBasedOnCustomer(customer);
 			return customerDto;
+		} else {
+			error.append("Email is not valid or Email already exists.");
 		}
 		return null;
 	}
