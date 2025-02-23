@@ -60,8 +60,10 @@ public class EmailService {
 		helper.setFrom(username);
 		helper.setTo(mailRequest.getTo());
 		helper.setSubject(mailRequest.getSubject());
-		if (ObjectUtils.isEmpty(mailRequest.getVariables()) && StringUtils.hasText(mailRequest.getTemplate())) {
-			helper.setText(getEmailContent(mailRequest.getTemplate(), mailRequest.getVariables()), true);
+		if (!ObjectUtils.isEmpty(mailRequest.getVariables()) && !ObjectUtils.isEmpty(mailRequest.getTemplate())) {
+			String text = getEmailContent(mailRequest.getTemplate(), mailRequest.getVariables());
+			logger.info(text);
+			helper.setText(StringUtils.hasText(text) ? text : mailRequest.getBody(), true);
 		} else
 			helper.setText(mailRequest.getBody(), true);
 		mailSender.send(mimeMessage);
