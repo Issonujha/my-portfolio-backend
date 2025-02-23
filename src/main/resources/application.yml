@@ -20,6 +20,8 @@ spring:
           starttls:
             enable: true
         debug: true
+  main:
+    allow-bean-definition-overriding: true
 
 aws:
   accessKey: ${AWS_ACCESS_KEY_ID}
@@ -28,6 +30,8 @@ aws:
   bucketName: ${AWS_BUCKET_NAME}
     
 logging:
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
   file:
     name: logs/docker.log
   level:

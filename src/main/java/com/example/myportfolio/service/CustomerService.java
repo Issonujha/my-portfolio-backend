@@ -1,5 +1,7 @@
 package com.example.myportfolio.service;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -52,13 +54,11 @@ public class CustomerService {
 				.username(customer.getEmail()).build();
 		authService.register(signup, customer);
 		try {
-			emailService.sendMailToMeFromWeb(MailRequest.builder().to(customer.getEmail())
-					.subject("You're Onboarded successfully!!")
-					.body("Hi " + customer.getName() + ", \n"
-							+ " you have onborded and please verify and login to your account using the below credentials: \n username: "
-							+ customer.getEmail() + " \n" + "Password: " + signup.getPassword() + "\n"
-							+ "Thank you for choosing us!")
-					.build());
+			emailService.sendMailToMeFromWeb(
+					MailRequest.builder().to(customer.getEmail()).subject("You're Onboarded successfully!!")
+							.variables(Map.of("Name", customer.getName(), "Email", customer.getEmail(), "Password",
+									signup.getPassword(), "LoginUrl", "https://portfolio.sonujha.in/login"))
+							.template("onboarding-template").build());
 		} catch (MessagingException e) {
 			logger.info(customer.getEmail() + " Customer Onboarded but cannot send email." + customer.getId());
 		}

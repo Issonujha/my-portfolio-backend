@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Welcome to Our Platform</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        .button { display: inline-block; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, <span th:text="${Name}"></span>!</h2>
+        <p>You are successfully on boarded. Please verify and login using the credentials below:</p>
+        <p><strong>User name:</strong> <span th:text="${Email}"></span></p>
+        <p><strong>Password:</strong> <span th:text="${Password}"></span></p>
+        <p><a th:href="${LoginUrl}" class="button">Login Now</a></p>
+        <p>Thank you for choosing us!</p>
+    </div>
+</body>
+</html>
