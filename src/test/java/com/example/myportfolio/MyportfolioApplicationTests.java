@@ -11,12 +11,15 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import com.example.myportfolio.config.TestConfig;
 import com.example.myportfolio.service.EmailService;
 
 @SpringBootTest
+@Import(TestConfig.class)
 class MyportfolioApplicationTests {
 	
 	@Mock
