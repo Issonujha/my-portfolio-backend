@@ -37,7 +37,7 @@ public class BuildController {
 				.variables(Map.of("URL",
 						(deployed.equalsIgnoreCase("frontend") ? "https://portfolio.sonujha.in/"
 								: "https://api.sonujha.in/"),
-						"Deployed", deployed, "Name",
+						"Deployed", deployed, "User",
 						(railwayDeploymentData.getDeployment() != null
 								? String.valueOf(railwayDeploymentData.getDeployment().getValue())
 								: "Sonu")))

@@ -1747,3 +1747,117 @@ Action:
 
 Consider defining a bean of type 'org.springframework.security.core.userdetails.UserDetailsService' in your configuration.
 
+2025-02-24 01:01:38 [restartedMain] INFO  c.e.m.MyportfolioApplication - Starting MyportfolioApplication using Java 19.0.2 with PID 1740 (D:\Spring Boot - Coding Ninjas\Personal Projects\myportfolio\target\classes started by monuk in D:\Spring Boot - Coding Ninjas\Personal Projects\myportfolio)
+2025-02-24 01:01:38 [restartedMain] INFO  c.e.m.MyportfolioApplication - The following 1 profile is active: "dev"
+2025-02-24 01:01:38 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-24 01:01:38 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 4 JPA repository interfaces.
+2025-02-24 01:01:38 [restartedMain] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'templateEngine' with a different definition: replacing [Root bean: class=null; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=true; fallback=false; factoryBeanName=thymeLeafConfig; factoryMethodName=templateEngine; initMethodNames=null; destroyMethodNames=[(inferred)]; defined in class path resource [com/example/myportfolio/config/ThymeLeafConfig.class]] with [Root bean: class=null; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; fallback=false; factoryBeanName=org.springframework.boot.autoconfigure.thymeleaf.TemplateEngineConfigurations$DefaultTemplateEngineConfiguration; factoryMethodName=templateEngine; initMethodNames=null; destroyMethodNames=[(inferred)]; defined in class path resource [org/springframework/boot/autoconfigure/thymeleaf/TemplateEngineConfigurations$DefaultTemplateEngineConfiguration.class]]
+2025-02-24 01:01:38 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8089 (http)
+2025-02-24 01:01:38 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-02-24 01:01:38 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-02-24 01:01:38 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-02-24 01:01:38 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 351 ms
+2025-02-24 01:01:39 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-24 01:01:39 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-02-24 01:01:39 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-24 01:01:39 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-34 - Starting...
+2025-02-24 01:01:42 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-34 - Added connection com.mysql.cj.jdbc.ConnectionImpl@12a11b46
+2025-02-24 01:01:42 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-34 - Start completed.
+2025-02-24 01:01:42 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-34)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-02-24 01:01:42 [restartedMain] INFO  o.h.m.i.EntityInstantiatorPojoStandard - HHH000182: No default (no-argument) constructor for class: com.example.myportfolio.entity.Customer (class must be instantiated by Interceptor)
+2025-02-24 01:01:42 [restartedMain] INFO  o.h.m.i.EntityInstantiatorPojoStandard - HHH000182: No default (no-argument) constructor for class: com.example.myportfolio.entity.ImageEntity (class must be instantiated by Interceptor)
+2025-02-24 01:01:42 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-24 01:01:50 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-24 01:01:50 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailService
+2025-02-24 01:01:50 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-24 01:01:50 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2025-02-24 01:01:50 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-02-24 01:01:50 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-02-24 01:01:50 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8089 (http) with context path '/'
+2025-02-24 01:01:50 [restartedMain] INFO  c.e.m.MyportfolioApplication - Started MyportfolioApplication in 12.048 seconds (process running for 2543.744)
+2025-02-24 01:01:50 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-02-24 01:03:17 [http-nio-8089-exec-1] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-24 01:03:17 [http-nio-8089-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-02-24 01:03:17 [http-nio-8089-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2025-02-24 01:03:17 [http-nio-8089-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /build?deployed=Backend
+2025-02-24 01:03:17 [http-nio-8089-exec-1] WARN  c.e.m.jwt.JwtAuthenticationFilter - Filtering request....
+2025-02-24 01:03:17 [http-nio-8089-exec-1] WARN  c.e.m.jwt.JwtAuthenticationFilter - JWT token is missing or invalid in the request header.
+2025-02-24 01:03:17 [http-nio-8089-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-02-24 01:03:17 [http-nio-8089-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured OPTIONS /build?deployed=Backend
+2025-02-24 01:03:17 [http-nio-8089-exec-1] INFO  c.e.m.controller.BuildController - Sucess!
+2025-02-24 01:03:17 [emailThreadStart-1] INFO  c.e.myportfolio.service.EmailService - <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .content {
+            padding: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">🎉 Build Success and Deployed! 🎉</div>
+        <div class="content">
+            <p>Hello <span></span></p>
+            <p>Congratulations! Your recent build was successfully completed and deployed.</p>
+            <p>We appreciate your efforts and look forward to more achievements.</p>
+            <a href="https://api.sonujha.in/" class="button">View <span>Backend</span> Details</a>
+        </div>
+        <div class="footer">
+            <p>Best Regards<br></p>
+        </div>
+    </div>
+</body>
+</html>
+
+2025-02-24 01:03:23 [emailThreadStart-1] INFO  c.e.myportfolio.service.EmailService - HTML email sent successfully to sjha9563@gmail.com
