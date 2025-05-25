@@ -50,6 +50,7 @@ public class EmailService {
 				context.setVariable(var.getKey(), var.getValue());
 			});
 		}
+		logger.info("template is " + template);
 		return templateEngine.process(template, context);
 	}
 	
@@ -58,6 +59,9 @@ public class EmailService {
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
 		helper.setFrom(username);
+		if (mailRequest.getTo() == null) {
+			mailRequest.setTo(username);
+		}
 		helper.setTo(mailRequest.getTo());
 		helper.setSubject(mailRequest.getSubject());
 		if (!ObjectUtils.isEmpty(mailRequest.getVariables()) && !ObjectUtils.isEmpty(mailRequest.getTemplate())) {

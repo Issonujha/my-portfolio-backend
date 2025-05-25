@@ -23,6 +23,8 @@ public class ProfileMailSender {
 	@PostMapping("/send")
 	public String sendMail(@RequestBody MailRequest mailRequest) {
 		try {
+			mailRequest.setBody(mailRequest.getTo() + "<br />" + mailRequest.getBody());
+			mailRequest.setTo(null);
 			logger.debug(mailRequest.getTo() + " " + mailRequest.getSubject() + " " + mailRequest.getBody());
 			emailService.sendMailToMeFromWeb(mailRequest);
 			return "Mail Send Successfully.";

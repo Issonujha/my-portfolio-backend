@@ -36,6 +36,41 @@ logging:
     name: logs/docker.log
   level:
     org.springframework.security: DEBUG
+    org.thymeleaf: DEBUG
+    
+    
+    
+#Open AI Chat model configuration
+### LangChain4J Configuration for Antrhopic Chat Model
+#langchain4j.anthropic.chat-model.api-key=${CLAUDE_API_KEY}
+#langchain4j.anthropic.chat-model.model-name=claude-3-5-sonnet-20241022
+#langchain4j.anthropic.chat-model.strict-tools=true
+#langchain4j.anthropic.chat-model.temperature=0.0
+#langchain4j.anthropic.chat-model.timeout=PT60S
+#langchain4j.anthropic.chat-model.log-requests=false
+#langchain4j.anthropic.chat-model.log-responses=false
+
+## LangChain4J Configuration for OpenAI Chat Model
+langchain4j:
+  open-ai:
+    api-key: ${OPENAI_API_KEY}
+    chat-model:
+      strict-tools: true
+      model-name: gpt-4o
+      temperature: 0.0
+      timeout: PT60S
+      log-requests: false
+      log-responses: false
+
+### LangChain4J Configuration for Ollama and DeepSeek R1 Chat Model
+#langchain4j.ollama.chat-model.base-url=http://localhost:11434
+#langchain4j.ollama.chat-model.model-name=deepseek-r1
+#langchain4j.ollama.chat-model.strict-tools=true
+#langchain4j.ollama.chat-model.model-name=gpt-4o 
+#langchain4j.ollama.chat-model.temperature=0.0
+#langchain4j.ollama.chat-model.timeout=PT60S
+#langchain4j.ollama.chat-model.log-requests=false
+#langchain4j.ollama.chat-model.log-responses=false
 
 
 server:
