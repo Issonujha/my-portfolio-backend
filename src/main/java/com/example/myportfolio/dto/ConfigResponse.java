@@ -1,13 +1,15 @@
 package com.example.myportfolio.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConfigResponse {
+@Getter
+@Setter
+public class ConfigResponse extends GenericResponse {
 	
 	private KeyValue account;
 	private KeyValue customer;

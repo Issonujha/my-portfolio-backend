@@ -41,6 +41,7 @@ public class UserService {
 					configResponse.setCustomer(
 							new KeyValue(loggedInUser.getCustomer().getId(), loggedInUser.getCustomer().getName()));
 				configResponse.setThumb(loggedInUser.getThumb());
+				configResponse.setS(true);
 			}
 		}
 	}
