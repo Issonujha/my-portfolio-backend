@@ -74,4 +74,18 @@ public class EmailService {
 		logger.info(String.format("HTML email sent successfully to %s", mailRequest.getTo()));
 	}
 
+	@Async
+	public void sendSimpleMail(String to, String subject, String text) {
+		try {
+			MailRequest req = MailRequest.builder()
+				.to(to)
+				.subject(subject)
+				.body(text)
+				.build();
+			sendMailToMeFromWeb(req);
+		} catch (Exception e) {
+			logger.warn("Failed to send simple mail: {}", e.getMessage());
+		}
+	}
+
 }
