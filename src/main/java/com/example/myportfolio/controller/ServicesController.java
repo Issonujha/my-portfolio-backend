@@ -22,7 +22,7 @@ import com.example.myportfolio.service.CommercialServiceService;
 
 @RestController
 @RequestMapping("/services")
-@CrossOrigin(origins = "*")
+@CrossOrigin(originPatterns = "*", allowCredentials = "true")
 public class ServicesController {
 
     private final CommercialServiceService commercialServiceService;
