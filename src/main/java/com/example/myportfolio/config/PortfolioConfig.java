@@ -50,7 +50,7 @@ public class PortfolioConfig {
 				.authorizeHttpRequests(authz -> authz
 						// Public endpoints that do not require authentication
 						.requestMatchers("/", "/build/**", "/logs", "/auth/**", "/projects/all", "/get/{id}", "/mail/send",
-								"/customer/onboard")
+								"/customer/onboard", "/services/**")
 						.permitAll()
 						.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
