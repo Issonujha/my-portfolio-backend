@@ -1,33 +1,33 @@
 spring:
   datasource:
     url: ${DB_URL}?createDatabaseIfNotExist=true
-    username: ${DB_USERNAME}
+    username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   profiles:
-    active: ${SPRING_PROFILES_ACTIVE:dev}
+    active: ${SPRING_PROFILES_ACTIVE:prod}
   jpa:
     hibernate.ddl-auto: update
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ${EMAIL}
-    password: ${EMAIL_PASSWORD}
+    username: ${EMAIL:sjha9563@gmail.com}
+    password: ${EMAIL_PASSWORD:none}
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
-        debug: true
+        debug: false
   main:
     allow-bean-definition-overriding: true
 
 aws:
-  accessKey: ${AWS_ACCESS_KEY_ID}
-  secretKey: ${AWS_SECRET_ACCESS_KEY}
-  region: ${AWS_REGION}
-  bucketName: ${AWS_BUCKET_NAME}
+  accessKey: ${AWS_ACCESS_KEY_ID:}
+  secretKey: ${AWS_SECRET_ACCESS_KEY:}
+  region: ${AWS_REGION:us-east-2}
+  bucketName: ${AWS_BUCKET_NAME:myportfoliobucketdata}
     
 logging:
   pattern:
@@ -35,25 +35,12 @@ logging:
   file:
     name: logs/docker.log
   level:
-    org.springframework.security: DEBUG
-    org.thymeleaf: DEBUG
-    
-    
-    
-#Open AI Chat model configuration
-### LangChain4J Configuration for Antrhopic Chat Model
-#langchain4j.anthropic.chat-model.api-key=${CLAUDE_API_KEY}
-#langchain4j.anthropic.chat-model.model-name=claude-3-5-sonnet-20241022
-#langchain4j.anthropic.chat-model.strict-tools=true
-#langchain4j.anthropic.chat-model.temperature=0.0
-#langchain4j.anthropic.chat-model.timeout=PT60S
-#langchain4j.anthropic.chat-model.log-requests=false
-#langchain4j.anthropic.chat-model.log-responses=false
+    org.springframework.security: INFO
+    org.thymeleaf: INFO
 
-## LangChain4J Configuration for OpenAI Chat Model
 langchain4j:
   open-ai:
-    api-key: ${OPENAI_API_KEY}
+    api-key: ${OPENAI_API_KEY:}
     chat-model:
       strict-tools: true
       model-name: gpt-4o
@@ -61,17 +48,6 @@ langchain4j:
       timeout: PT60S
       log-requests: false
       log-responses: false
-
-### LangChain4J Configuration for Ollama and DeepSeek R1 Chat Model
-#langchain4j.ollama.chat-model.base-url=http://localhost:11434
-#langchain4j.ollama.chat-model.model-name=deepseek-r1
-#langchain4j.ollama.chat-model.strict-tools=true
-#langchain4j.ollama.chat-model.model-name=gpt-4o 
-#langchain4j.ollama.chat-model.temperature=0.0
-#langchain4j.ollama.chat-model.timeout=PT60S
-#langchain4j.ollama.chat-model.log-requests=false
-#langchain4j.ollama.chat-model.log-responses=false
-
 
 server:
   port: ${SERVER_PORT:8089}
