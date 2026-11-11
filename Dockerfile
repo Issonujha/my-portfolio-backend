@@ -1,5 +1,5 @@
 # Step 1: Build the application using Maven
-FROM maven:3.8.4-openjdk-17 AS build
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 
 WORKDIR /app
 COPY pom.xml .  
@@ -9,14 +9,14 @@ COPY src ./src
 RUN mvn clean package -DskipTests  
 
 # Step 2: Create a lightweight image for running the JAR
-FROM openjdk:17-jdk-slim  
+FROM eclipse-temurin:17-jre-jammy  
 
 WORKDIR /app  
 
 # Copy the JAR file from the build stage to the runtime stage
 COPY --from=build /app/target/myportfolio-0.0.1-SNAPSHOT.jar ./app.jar  
 
-# Expose port 8089 (or the port your Spring Boot app uses)
+# Expose port 8089
 EXPOSE 8089  
 
 # Run the Spring Boot application
